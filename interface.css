@@ -1,0 +1,43 @@
+
+content{
+  margin-bottom: 5%;
+}
+form{
+  margin-left: 32%;
+
+}
+body{
+  background-color: crimson;
+}
+.row{
+  margin-top: 8%;
+}
+.bas{
+  background-color: gray;
+  height:100px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-radius: 10px;
+}
+.copyright{
+  text-align: center;
+  margin-top: 50px;
+}
+.inscri{
+  margin-left: 16%;
+}
+.form-group{
+  width: 435px;
+}
+.form-inline div button{
+  margin-top: 15px;
+}
+.tete{
+
+}
+link:a{
+  decoration:none;
+}
+.infoCompte{
+  background-color: thistle;
+}
