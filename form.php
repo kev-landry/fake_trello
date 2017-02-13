@@ -9,48 +9,52 @@ include 'head.php';
             die('Erreur : ' . $e->getMessage());
         }
         // On capture nos POST en variable
+				if (isset($_POST['pseudo']) AND isset($_POST['password'])){
+					$pseudo = $_POST['pseudo'];
+					$password = $_POST['password'];
 
-        $pseudo = $_POST['pseudo'];
-        $password = $_POST['password'];
 
-        //On compte combien de fois on retrouve le pseudo avec COUNT
-        $verif_pseudo = $bdd->query('SELECT COUNT(*) FROM user WHERE pseudo = \''.$pseudo.'\' ');
-        if ($verif_pseudo->fetchColumn() == 0) { // on check le pseudo de colonne en colonne
-            ?>
-			<h1>Veuillez vous inscrire</h1> <!-- Si aucun pseudo -->
-			<?php
 
-		} else { 	//Pseudo existant
+					        //On compte combien de fois on retrouve le pseudo avec COUNT
+					        $verif_pseudo = $bdd->query('SELECT COUNT(*) FROM user WHERE pseudo = \''.$pseudo.'\' ');
+					        if ($verif_pseudo->fetchColumn() == 0) { // on check le pseudo de colonne en colonne
+					            ?>
+								<h1>Veuillez vous inscrire</h1> <!-- Si aucun pseudo -->
+								<?php
 
-            //query dans la BDD pour capturer le pseudo
-            $reponse_login = $bdd->query('SELECT password FROM user WHERE pseudo = \''.$pseudo.'\' LIMIT 1');
-            $donnees = $reponse_login->fetch();// On recupere la ligne du pseudo
+							} else { 	//Pseudo existant
 
-            //compare le mdp
-            if ($password == $donnees['password']) { //Si dans cette ligne il y a le bon pseudo
-                ?>
-				<div class="row tete">
-					<div class="col-lg-6 col-lg-offset-3">
-				<h1 style="text-align:center">Bienvenue sur votre Trello <span style="font-size:5rem; color:thistle"><?php echo "$pseudo"; ?> </span>!</h1>
-			</div>
-		</div>
-				<?php
+					            //query dans la BDD pour capturer le pseudo
+					            $reponse_login = $bdd->query('SELECT password FROM user WHERE pseudo = \''.$pseudo.'\' LIMIT 1');
+					            $donnees = $reponse_login->fetch();// On recupere la ligne du pseudo
 
-            } else {
-                ?>
-					<div class="row tete">
-						<div class="col-lg-6 col-lg-offset-3">
-							<div id="mdp" style="text-align:center">
-								<h1 style="color:thistle">Mauvais mot de passe</h1>
-								<p><a style="decoration:none"href="http://localhost/mysql/interface.php"> Retourner à l'écran de connexion </a></p>
+					            //compare le mdp
+					            if ($password == $donnees['password']) { //Si dans cette ligne il y a le bon pseudo
+					                ?>
+									<div class="row tete">
+										<div class="col-lg-6 col-lg-offset-3">
+									<h1 style="text-align:center">Bienvenue sur votre Trello <span style="font-size:5rem; color:thistle"><?php echo "$pseudo"; ?> </span>!</h1>
+								</div>
 							</div>
-						</div>
-					</div>
-				<?php
+									<?php
 
-            }
-            $reponse_login->closeCursor(); //fermeture de la requête
-        }
+					            } else {
+					                ?>
+										<div class="row tete">
+											<div class="col-lg-6 col-lg-offset-3">
+												<div id="mdp" style="text-align:center">
+													<h1 style="color:thistle">Mauvais mot de passe</h1>
+													<p><a style="decoration:none"href="http://localhost/mysql/interface.php"> Retourner à l'écran de connexion </a></p>
+												</div>
+											</div>
+										</div>
+									<?php
+
+					            }
+					            $reponse_login->closeCursor(); //fermeture de la requête
+					        }
+				}
+
 
         $reponse = $bdd->query('SELECT * FROM user WHERE pseudo = \''.$pseudo.'\'');
         // On affiche chaque entrée une à une

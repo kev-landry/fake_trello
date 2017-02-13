@@ -12,13 +12,13 @@ body{
 .row{
   margin-top: 8%;
 }
-.bas{
+/*.bas{
   background-color: gray;
   height:100px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   border-radius: 10px;
-}
+}*/
 .copyright{
   text-align: center;
   margin-top: 50px;
@@ -38,13 +38,16 @@ body{
 link:a{
   decoration:none;
 }
+/*
 .infoCompte{
   background-color: thistle;
 }
+*/
 .tableau{
+  border: 1px solid black;
   height: 200px;
   background-color: thistle;
 }
 h2{
-  color: white;
+
 }
