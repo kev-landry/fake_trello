@@ -23,7 +23,7 @@
           <h3>S'inscrire</h3>
           <div class="form-group">
             <label for="exemplePseudo">Pseudo</label>
-            <input type="text" class="form-control" name="newPseudo" placeholder="Pseudo" required>
+            <input type="text" class="form-control" name=" newPseudo" placeholder="Pseudo" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
@@ -36,7 +36,6 @@
           <button type="submit" class="btn btn-primary">Valider</button>
         </form>
       </div>
-
 
     </div>
     <?php

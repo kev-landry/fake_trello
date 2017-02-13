@@ -32,12 +32,19 @@ body{
 .form-inline div button{
   margin-top: 15px;
 }
-.tete{
+/*.tete{
 
-}
+}*/
 link:a{
   decoration:none;
 }
 .infoCompte{
   background-color: thistle;
+}
+.tableau{
+  height: 200px;
+  background-color: thistle;
+}
+h2{
+  color: white;
 }

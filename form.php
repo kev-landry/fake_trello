@@ -3,30 +3,31 @@ include 'head.php';
 ?>
 
 		<?php
-        try {
-            $bdd = new PDO('mysql:host=127.0.0.1;dbname=trello;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        try {	//Connexion  BDD via PDO
+            $bdd = new PDO('mysql:host=127.0.0.1;dbname=trello;charset=utf8', 'root', 'root'); //le array sert à montrer les erreurs
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
         // On capture nos POST en variable
-				
+
         $pseudo = $_POST['pseudo'];
         $password = $_POST['password'];
 
         //On compte combien de fois on retrouve le pseudo avec COUNT
         $verif_pseudo = $bdd->query('SELECT COUNT(*) FROM user WHERE pseudo = \''.$pseudo.'\' ');
-        if ($verif_pseudo->fetchColumn() == 0) {
+        if ($verif_pseudo->fetchColumn() == 0) { // on check le pseudo de colonne en colonne
             ?>
-			<h1>Veuillez vous inscrire</h1>
+			<h1>Veuillez vous inscrire</h1> <!-- Si aucun pseudo -->
 			<?php
 
-        } else { //Login existant
-            //matching mdp -> pseudo
+		} else { 	//Pseudo existant
+
+            //query dans la BDD pour capturer le pseudo
             $reponse_login = $bdd->query('SELECT password FROM user WHERE pseudo = \''.$pseudo.'\' LIMIT 1');
-            $donnees = $reponse_login->fetch();
+            $donnees = $reponse_login->fetch();// On recupere la ligne du pseudo
 
             //compare le mdp
-            if ($password == $donnees['password']) {
+            if ($password == $donnees['password']) { //Si dans cette ligne il y a le bon pseudo
                 ?>
 				<div class="row tete">
 					<div class="col-lg-6 col-lg-offset-3">
@@ -77,16 +78,26 @@ include 'head.php';
 
 // INSCRIPTION -----------------------
 
-$newPseudo=$_POST['newPseudo'];
-$newEmail=$_POST['newEmail'];
-$newPassword=$_POST['newPassword'];
+//On check si le formulaire est remplie pour ne pas créer nos var pour rien
+if (isset($_POST['newPseudo']) AND isset($_POST['newEmail']) AND isset($_POST['newPassword'])) {
+	//On capture nos variables
+	$newPseudo=$_POST['newPseudo'];
+	$newEmail=$_POST['newEmail'];
+	$newPassword=$_POST['newPassword'];
 
-$req = $bdd->prepare('INSERT INTO user(pseudo, mail, password) VALUES(:newPseudo, :newEmail, :newPassword)');
-$req->execute(array(
-    'newPseudo' => $newPseudo,
-    'newEmail' => $newEmail,
-    'newPassword' => $newPassword
-    ));
+	//Méthode prepare + execute plus safe
+	$req = $bdd->prepare('INSERT INTO user(pseudo, mail, password) VALUES(:newPseudo, :newEmail, :newPassword)');
+	$req->execute(array(
+	    'newPseudo' => $newPseudo,
+	    'newEmail' => $newEmail,
+	    'newPassword' => $newPassword
+	    ));
 
-    include 'footer.php';
+
+}
+
+include'board.php';
+include'footer.php';
+
+
     ?>
