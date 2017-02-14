@@ -1,12 +1,17 @@
 <?php
+  session_start();
+
   include 'head.php';
 
  ?>
-    <div class="row">
+    <div class="row"> <!--  CONNEXION    -->
       <div id="carre1" class="col-lg-12 ">
-        <form class="form-inline" method="POST" action="form.php">
+        <form class="form-inline" method="POST" action="trello.php">
           <h3>Se connecter</h3>
-          <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="pseudo" placeholder="Pseudo" required>
+          <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" value="<?php if (isset($_POST['newPseudo'])){
+            echo $_POST['newPseudo'];
+          } ?>"
+          name="pseudo" placeholder="Pseudo" required>
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon">$</div>
             <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
@@ -17,9 +22,9 @@
         </form>
       </div>
     </div>
-    <div class="row">
+    <div class="row"> <!--  INSCRIPTION   -->
       <div class="col-lg-6 inscri">
-        <form method="post" action="form.php">
+        <form method="post" action="#">
           <h3>S'inscrire</h3>
           <div class="form-group">
             <label for="exemplePseudo">Pseudo</label>
@@ -50,5 +55,8 @@
 
 
     <?php
+
+    // INSCRIPTION -----------------------
+    include'inscription.php';
     include 'footer.php';
     ?>
