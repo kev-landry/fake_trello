@@ -9,12 +9,14 @@
 </div>
 <?php
 
-
-$newListe= $_POST['liste'];
-echo $newListe;
+if (isset($_POST['liste'])){
+  $liste= $_POST['liste'];
 //Méthode prepare + execute plus safe
-$req = $bdd->prepare('INSERT INTO liste(titre) VALUES(:newListe)');
-$req->execute(array('newListe' => $newListe));
+  $req = $bdd->prepare('INSERT INTO liste(titre) VALUES(:liste)');
+  $req->execute(array('liste' => $liste));
+
+  echo $liste;
+}
 // Quand on clique sur créer liste query to bdd avec INSERT
 //begin session
 /*
