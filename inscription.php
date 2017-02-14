@@ -9,9 +9,9 @@ if (isset($_POST['newPseudo']) AND isset($_POST['newEmail']) AND isset($_POST['n
 	//Méthode prepare + execute plus safe
 	$req = $bdd->prepare('INSERT INTO user(pseudo, mail, password) VALUES(:newPseudo, :newEmail, :newPassword)');
 	$req->execute(array(
-	    'newPseudo' => $newPseudo,
-	    'newEmail' => $newEmail,
-	    'newPassword' => $newPassword
-	    ));
+		'newPseudo' => $newPseudo,
+		'newEmail' => $newEmail,
+		'newPassword' => $newPassword
+	));
 }
 ?>
