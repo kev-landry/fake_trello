@@ -7,7 +7,8 @@ form{
 
 }
 body{
-  background-color: crimson;
+  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+
 }
 .row{
   margin-top: 8%;
@@ -46,7 +47,7 @@ link:a{
 .tableau{
   border: 1px solid black;
   height: 200px;
-  background-color: thistle;
+  background-color: white;
 }
 h2{
 

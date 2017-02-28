@@ -1,5 +1,5 @@
 <?php
-  //session_start();
+  
 
   include 'head.php';
 
@@ -7,7 +7,7 @@
   <div class="row">
     <!--  CONNEXION    -->
     <div id="carre1" class="col-lg-12 ">
-      <form class="form-inline" method="POST" action="trello.php">
+      <form class="form-inline" method="POST" action="script.php">
         <h3>Se connecter</h3>
         <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" value="<?php if (isset($_POST['newPseudo'])){
             echo $_POST['newPseudo'];
