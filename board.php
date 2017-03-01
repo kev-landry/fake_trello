@@ -9,21 +9,25 @@
 </div>
 <?php
 
-    if (isset($_POST['liste'])){
-      $liste= $_POST['liste'];
-      //Méthode prepare + execute plus safe
-      $req = $bdd->prepare('INSERT INTO liste(titre) VALUES(:liste)');
-      $req->execute(array('liste' => $liste));
+    $reponse = $bdd->query('SELECT titre FROM liste');
+    while ($donnees = $reponse->fetch()) {
+        ?>
+      <div class="col-lg-3">
+        <p>Liste : <?php echo $donnees['titre']; ?></p>
+      </div><?php
 
-      echo $liste;
     }
-    // Quand on clique sur créer liste query to bdd avec INSERT
-    //begin session
-    /*
-session start()
+        $reponse->closeCursor();
 
-$_SESSION pseudo
+    if (isset($_POST['liste'])) {
+        $liste= $_POST['liste'];
+      //Méthode prepare + execute plus safe
+        $req = $bdd->prepare('INSERT INTO liste(titre) VALUES(:liste)');
+        $req->execute(array('liste' => $liste));
+
+        $req->closeCursor();
+    }
 
 
-session_destroy*/
-    ?>
+
+?>

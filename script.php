@@ -21,12 +21,12 @@
       } else {    //Pseudo existant
 
         //query dans la BDD pour capturer le pseudo
-        $reponse_login = $bdd->query('SELECT password FROM user WHERE pseudo = \''.$pseudo.'\' LIMIT 1');
+          $reponse_login = $bdd->query('SELECT password FROM user WHERE pseudo = \''.$pseudo.'\' LIMIT 1');
           $donnees = $reponse_login->fetch();// On recupere la ligne du pseudo
 
         //compare le mdp
         if ($password == $donnees['password']) { //Si dans cette ligne il y a le bon ppassword
-
+            $_SESSION['pseudo'] = $_POST['pseudo'];
             header('Location: trello.php');
         } else {
             header('Location: wrong.html');
