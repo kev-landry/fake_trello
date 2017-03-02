@@ -1,12 +1,18 @@
-
 <?php
+try {    //Connexion  BDD via PDO
+    $bdd = new PDO('mysql:host=127.0.0.1;dbname=trello;charset=utf8', 'root', 'root'); //le array sert à montrer les erreurs
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+
 
     $reponse = $bdd->query('SELECT titre FROM liste');
     while ($donnees = $reponse->fetch()) {
         ?>
       <div class="col-lg-3">
         <p>Liste : <?php echo $donnees['titre']; ?></p>
-      </div><?php
+      </div>
+      <?php
     }
         $reponse->closeCursor();
 
@@ -18,4 +24,5 @@
 
         $req->closeCursor();
     }
+    header('Location:trello.php');
 ?>
