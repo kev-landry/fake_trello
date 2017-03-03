@@ -8,10 +8,11 @@ form{
 }
 body{
   background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
-
+  margin: 0;
+  padding: 0;
 }
 .row{
-  margin-top: 8%;
+
 }
 /*.bas{
   background-color: gray;
@@ -46,8 +47,9 @@ link:a{
 */
 .tableau{
   border: 1px solid black;
-  height: 200px;
+  height: 100%;
   background-color: white;
+  margin: 0;
 }
 h2{
 
@@ -64,19 +66,16 @@ h2{
   border-radius: 3px;
   text-align: center;
 }
-.row-fluid{
-  white-space: nowrap;
-  float: auto;
-}
-.row-fluid .col-lg-2{
-     display: inline-block;
-     float: none;
-}
-.row {
-  margin-left: 0px;
-  margin-right: 0px;
-  white-space: nowrap;
-}
-.container{
+.container-fluid > .row{
   width: 100%;
+  overflow-x:scroll;
+  overflow-y:hidden;
+  white-space:nowrap;
+}
+.container-fluid > .row [class*="col-lg"]{
+  float: none;
+  display: inline-block;
+}
+.container-fluid{
+  margin: 0px;
 }

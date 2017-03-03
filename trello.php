@@ -28,15 +28,20 @@ try {    //Connexion  BDD via PDO
 						<?php
                       $reponse->closeCursor();
     }
-?><!--<div class="container">-->
-	<div class="row-fluid tableau">
-			<div class="col-lg-12 crealiste">
-				<h2>Board</h2>
-				<form method="post" action="scriptBoard.php">
-				 		<button class="btn btn-primary" type="submit" name="liste">Créer liste</button>
-	       		<input name="liste" required/>
-				<form>
-			</div>
+?>
+<div class="row">
+   <div class="col-lg-12 crealiste">
+    <form method="post" action="scriptBoard.php">
+        <button class="btn btn-primary" type="submit" name="liste">Créer liste</button>
+        <input name="liste" required/>
+    <form>
+  </div>
+
+</div>
+
+
+<div class="container-fluid" id="bandeau">
+	<div class="row tableau">
       <?php
       $reponse = $bdd->query('SELECT titre FROM liste');
       while ($donnees = $reponse->fetch()) {
@@ -50,7 +55,7 @@ try {    //Connexion  BDD via PDO
           $reponse->closeCursor();
     ?>
 	</div>
-<!--</div>-->
+</div>
 
 <?php
 include'footer.php';
