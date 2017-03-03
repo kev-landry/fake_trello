@@ -9,7 +9,7 @@ try {    //Connexion  BDD via PDO
     $reponse = $bdd->query('SELECT titre FROM liste');
     while ($donnees = $reponse->fetch()) {
         ?>
-      <div class="col-lg-3">
+      <div class="col-lg-2 liste">
         <p>Liste : <?php echo $donnees['titre']; ?></p>
       </div>
       <?php
@@ -25,4 +25,5 @@ try {    //Connexion  BDD via PDO
         $req->closeCursor();
     }
     header('Location:trello.php');
+
 ?>
