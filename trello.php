@@ -11,7 +11,7 @@ try {    //Connexion  BDD via PDO
     // On affiche chaque entrée une à une
     while ($donnees = $reponse->fetch()) {
         ?>
-						<div class="row infoCompte">
+						<div class="row-fluid infoCompte">
 							<div class="col-lg-3 col-lg-offset-1 "> <p>
 								<h2> Informations compte : </h2>
 								<strong>Pseudo</strong> :
@@ -29,12 +29,12 @@ try {    //Connexion  BDD via PDO
                       $reponse->closeCursor();
     }
 ?>
-<div class="row">
+<div class="row-fluid">
    <div class="col-lg-12 crealiste">
     <form method="post" action="scriptBoard.php">
         <button class="btn btn-primary" type="submit" name="liste">Créer liste</button>
-        <input name="liste" required/>
-    <form>
+        <input name="liste"/>
+    </form>
   </div>
 
 </div>
@@ -43,15 +43,22 @@ try {    //Connexion  BDD via PDO
 <div class="container-fluid" id="bandeau">
 	<div class="row tableau">
       <?php
-      $reponse = $bdd->query('SELECT titre FROM liste');
+      $reponse = $bdd->query('SELECT * FROM liste');
       while ($donnees = $reponse->fetch()) {
           ?>
         <div class="col-lg-2 liste">
-          <p>Liste : <?php echo $donnees['titre']; ?></p>
+          <p><span id="titreListe"><?php echo $donnees['titre'];?></span></p>
+          <div class="deleteliste">
+            <form method="post" action="suppliste.php">
+                <input type="hidden" class="btn btn-default btn-sm" name="suppliste" value="<?php echo $donnees['id'];?>"/>
+                  <button type="submit" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </button>
+            </form>
+            <?php echo $donnees['id'];?>
+          </div>
         </div>  <?php
-
       }
-
           $reponse->closeCursor();
     ?>
 	</div>
