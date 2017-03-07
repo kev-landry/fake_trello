@@ -1,16 +1,23 @@
 
+.barre{
+  background-color: #61C791;
+  height: 5px;
+}
 
+#bonjourUser{
+  color: #61C791;
+}
 form{
   margin-left: 32%;
-
 }
 body{
-  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+  background-color: #2A2F36;
   margin: 0;
   padding: 0;
 }
-.row{
-
+#boutonCrea{
+  background-color: #61C791;
+  border-color: #61C791;
 }
 /*.bas{
   background-color: gray;
@@ -38,21 +45,20 @@ link:a{
 }
 
 .infoCompte{
-  background-color: red;
+  color: #ECF0F1;
 }
 
 .tableau{
   height: 100%;
   margin: 0;
 }
-
 .crealiste{
   margin-bottom: 50px;
 }
 .liste{
   /*width: 20%;*/
   height: 350px;
-  background-color: gray;
+  background-color: #ECF0F1;
   margin-right: 10px;
   margin-bottom: 10px;
   border-radius: 3px;
@@ -74,6 +80,7 @@ link:a{
 .bandeau{
   border: none;
   height: 100%;
+  background-color: #15B154;
 }
 .deleteliste{
   margin-top: 80%;
