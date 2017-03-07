@@ -7,10 +7,14 @@
         die('Erreur : ' . $e->getMessage());
     }
 
-
-    $req = $bdd->prepare('DELETE FROM `liste` WHERE `id` = ?');
-    $req->execute(array($_POST['suppliste']));
-
+    if (isset($_POST['suppliste'])) {
+      if (empty($_POST['suppliste'])) {
+        return false;
+      }else{
+        $req = $bdd->prepare('DELETE FROM `liste` WHERE `id` = ?');
+        $req->execute(array($_POST['suppliste']));
+      }
+    }
 
     header('Location:trello.php');
 ?>

@@ -3,7 +3,12 @@
   background-color: #61C791;
   height: 5px;
 }
-
+h1, h2, h3{
+  color:  #ECF0F1;
+}
+h1{
+  text-align: center;
+}
 #bonjourUser{
   color: #61C791;
 }
@@ -15,9 +20,10 @@ body{
   margin: 0;
   padding: 0;
 }
-#boutonCrea{
+.btn{
   background-color: #61C791;
   border-color: #61C791;
+  color: #ECF0F1;
 }
 /*.bas{
   background-color: gray;

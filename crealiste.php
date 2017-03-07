@@ -7,13 +7,14 @@ try {    //Connexion  BDD via PDO
 
 
     if (isset($_POST['liste'])) {
-        $liste= $_POST['liste'];
-      //Méthode prepare + execute plus safe
-        $req = $bdd->prepare('INSERT INTO liste(titre) VALUES(:liste)');
-        $req->execute(array('liste' => $liste));
-
-        $req->closeCursor();
+        if (empty($_POST['liste'])) {
+            header('Location:trello.php');
+        } else {
+            $liste= $_POST['liste'];
+          //Méthode prepare + execute plus safe
+          $req = $bdd->prepare('INSERT INTO liste(titre) VALUES(:liste)');
+            $req->execute(array('liste' => $liste));
+            $req->closeCursor();
+        }
     }
     header('Location:trello.php');
-
-?>

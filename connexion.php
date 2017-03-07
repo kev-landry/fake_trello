@@ -1,5 +1,5 @@
 <?php
-  
+
 
   include 'head.php';
 
@@ -17,7 +17,7 @@
           <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
         </div>
         <div>
-          <button type="submit" class="btn btn-primary">Valider</button>
+          <button type="submit" class="btn">Valider</button>
         </div>
       </form>
     </div>
@@ -28,18 +28,15 @@
       <form method="post" action="#">
         <h3>S'inscrire</h3>
         <div class="form-group">
-          <label for="exemplePseudo">Pseudo</label>
           <input type="text" class="form-control" name=" newPseudo" placeholder="Pseudo" required>
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
           <input type="email" class="form-control" name="newEmail" placeholder="Email" required>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" name="newPassword" placeholder="Password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Valider</button>
+        <button type="submit" class="btn">Valider</button>
       </form>
     </div>
 
