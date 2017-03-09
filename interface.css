@@ -3,6 +3,7 @@
   background-color: #61C791;
   height: 5px;
 }
+
 h1, h2, h3{
   color:  #ECF0F1;
 }
@@ -13,12 +14,16 @@ h1{
   color: #61C791;
 }
 form{
-  margin-left: 32%;
+ width: 50%;
+ margin-left: 25%;
 }
 body{
   background-color: #2A2F36;
   margin: 0;
   padding: 0;
+}
+p{
+  #ECF0F1;
 }
 .btn{
   background-color: #61C791;
@@ -36,14 +41,8 @@ body{
   text-align: center;
   margin-top: 50px;
 }
-.inscri{
-  margin-left: 16%;
-}
-.form-group{
-  width: 435px;
-}
-.form-inline div button{
-  margin-top: 15px;
+.inscription{
+
 }
 
 link:a{
@@ -96,4 +95,25 @@ link:a{
     text-align: left;
     font-weight: 600;
     margin-top: 10px;
+}
+.h1trello{;
+  border-left: 3px solid #61C791;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  padding-left: 5px;
+
+}
+.test{
+  background-color: #61C791;
+  height: 25px;
+  width: 3px;
+}
+.connexion{
+  border-right-style: solid;
+  border-top-right-radius: 3px;
+  border-right-color: #61C791;
+  border-bottom-right-radius: 3px;
+}
+.rowlogin{
+  margin-top: 10%;
 }

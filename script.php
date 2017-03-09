@@ -16,7 +16,7 @@
     $verif_pseudo = $bdd->query('SELECT COUNT(*) FROM user WHERE pseudo = \''.$pseudo.'\' ');
       if ($verif_pseudo->fetchColumn() == 0) { // on check le pseudo de colonne en colonne
 
-        // Si aucun pseudo
+        // Si aucun pseudo on redirige
         header('Location: wrong.html');
       } else {    //Pseudo existant
 

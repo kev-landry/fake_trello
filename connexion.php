@@ -4,16 +4,18 @@
   include 'head.php';
 
  ?>
-  <div class="row">
-    <!--  CONNEXION    -->
-    <div id="carre1" class="col-lg-12 ">
-      <form class="form-inline" method="POST" action="script.php">
+<span class="test"></span>
+ <h1 style="margin-top:5%; "> <large><span class="h1trello">TRELLO</span></large></h1>
+  <div class="row-fluid rowlogin">
+    <div class="col-lg-6 connexion"> <!--  CONNEXION    -->
+      <form  method="POST" action="script.php">
         <h3>Se connecter</h3>
-        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" value="<?php if (isset($_POST['newPseudo'])){
+        <div class="form-group">
+          <input type="text" class="form-control" value="<?php if (isset($_POST['newPseudo'])){
             echo $_POST['newPseudo'];
           } ?>" name="pseudo" placeholder="Pseudo" required>
-        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-          <div class="input-group-addon">$</div>
+        </div>
+        <div class="form-group">
           <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
         </div>
         <div>
@@ -21,14 +23,13 @@
         </div>
       </form>
     </div>
-  </div>
-  <div class="row">
-    <!--  INSCRIPTION   -->
-    <div class="col-lg-6 inscri">
-      <form method="post" action="#">
+    <div class="barre1">
+    </div>
+    <div class="col-lg-6 inscription"> <!--  INSCRIPTION   -->
+      <form method="POST" action="#">
         <h3>S'inscrire</h3>
         <div class="form-group">
-          <input type="text" class="form-control" name=" newPseudo" placeholder="Pseudo" required>
+          <input type="text" class="form-control" name="newPseudo" placeholder="Pseudo" required>
         </div>
         <div class="form-group">
           <input type="email" class="form-control" name="newEmail" placeholder="Email" required>
@@ -36,25 +37,24 @@
         <div class="form-group">
           <input type="password" class="form-control" name="newPassword" placeholder="Password" required>
         </div>
-        <button type="submit" class="btn">Valider</button>
+        <div>
+          <button type="submit" class="btn">Valider</button>
+        </div>
       </form>
     </div>
-
   </div>
+
+
   <?php
-    try {
-        $bdd = new PDO('mysql:host=127.0.0.1;dbname=trello;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
+    // try {
+    //     $bdd = new PDO('mysql:host=127.0.0.1;dbname=trello;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    // } catch (Exception $e) {
+    //     die('Erreur : ' . $e->getMessage());
+    // }
 
 
-    ?>
-
-
-    <?php
 
     // INSCRIPTION -----------------------
-    include'inscription.php';
+    include 'inscription.php';
     include 'footer.php';
     ?>
