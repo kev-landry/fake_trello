@@ -19,7 +19,7 @@ if (isset($_POST['newPseudo']) AND isset($_POST['newEmail']) AND isset($_POST['n
 		'newEmail' => $newEmail,
 		'newPassword' => $newPassword
 	));
-	// header('Location:connexion.php');
+	header('Location:landingpage.php');
 	$req->closeCursor();
 }
 

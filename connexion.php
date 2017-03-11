@@ -1,60 +1,36 @@
 <?php
-
-
-  include 'head.php';
-
- ?>
-<span class="test"></span>
- <h1 style="margin-top:5%; "> <large><span class="h1trello">TRELLO</span></large></h1>
-  <div class="row-fluid rowlogin">
-    <div class="col-lg-6 connexion"> <!--  CONNEXION    -->
-      <form  method="POST" action="script.php">
-        <h3>Se connecter</h3>
-        <div class="form-group">
-          <input type="text" class="form-control" value="<?php if (isset($_POST['newPseudo'])){
-            echo $_POST['newPseudo'];
-          } ?>" name="pseudo" placeholder="Pseudo" required>
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
-        </div>
-        <div>
-          <button type="submit" class="btn">Valider</button>
-        </div>
-      </form>
-    </div>
-    <div class="barre1">
-    </div>
-    <div class="col-lg-6 inscription"> <!--  INSCRIPTION   -->
-      <form method="POST" action="#">
-        <h3>S'inscrire</h3>
-        <div class="form-group">
-          <input type="text" class="form-control" name="newPseudo" placeholder="Pseudo" required>
-        </div>
-        <div class="form-group">
-          <input type="email" class="form-control" name="newEmail" placeholder="Email" required>
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" name="newPassword" placeholder="Password" required>
-        </div>
-        <div>
-          <button type="submit" class="btn">Valider</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-
-  <?php
-    // try {
-    //     $bdd = new PDO('mysql:host=127.0.0.1;dbname=trello;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    // } catch (Exception $e) {
-    //     die('Erreur : ' . $e->getMessage());
-    // }
+  session_start();
+  try {    //Connexion  BDD via PDO
+    $bdd = new PDO('mysql:host=127.0.0.1;dbname=trello;charset=utf8', 'root', 'root'); //le array sert à montrer les erreurs
+  } catch (Exception $e) {
+      die('Erreur : ' . $e->getMessage());
+  }
 
 
 
-    // INSCRIPTION -----------------------
-    include 'inscription.php';
-    include 'footer.php';
-    ?>
+  if (isset($_POST['pseudo']) and isset($_POST['password'])) {
+      $pseudo = $_POST['pseudo'];
+      $password = $_POST['password'];
+
+    //On compte combien de fois on retrouve le pseudo avec COUNT
+    $verif_pseudo = $bdd->query('SELECT COUNT(*) FROM user WHERE pseudo = \''.$pseudo.'\' ');
+      if ($verif_pseudo->fetchColumn() == 0) { // on check le pseudo de colonne en colonne
+
+        // Si aucun pseudo on redirige
+        header('Location: wrong.html');
+      } else {    //Pseudo existant
+
+        //query dans la BDD pour capturer le pseudo
+          $reponse_login = $bdd->query('SELECT password FROM user WHERE pseudo = \''.$pseudo.'\' LIMIT 1');
+          $donnees = $reponse_login->fetch();// On recupere la ligne du pseudo
+
+        //compare le mdp
+        if ($password == $donnees['password']) { //Si dans cette ligne il y a le bon ppassword
+            $_SESSION['pseudo'] = $_POST['pseudo'];
+            header('Location: trello.php');
+        } else {
+            header('Location: wrong.html');
+        }
+          $reponse_login->closeCursor(); //fermeture de la requête
+      }
+  }
