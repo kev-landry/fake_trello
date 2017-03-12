@@ -40,7 +40,7 @@ try {    //Connexion  BDD via PDO
     }
 ?>
 
-<div class="row-fluid"> <!--création liste -->
+<div class="row-fluid"> <!--création des listes -->
    <div class="col-lg-12 crealiste">
     <form method="post" action="crealiste.php">
         <button id="boutonCrea"class="btn btn-primary" type="submit" name="liste">Créer liste</button>
@@ -50,13 +50,13 @@ try {    //Connexion  BDD via PDO
 </div>
 
 
-<div class="container-fluid" id="bandeau">
-	<div class="row tableau">
+<div class="container-fluid" id="bandeau"> <!-- bandeau liste -->
+	<div class="row tableau"> <!-- row qui défile -->
       <?php
       $reponse = $bdd->query('SELECT * FROM liste');
-      while ($donnees = $reponse->fetch()) {
+      while ($donnees = $reponse->fetch()) {  // Boucle qui permet d'afficher toutes les listes de l'utilisateur
           ?>
-        <div class="col-lg-2 liste">
+        <div class="col-lg-2 liste"> <!-- liste -->
           <p><span id="titreListe"><?php echo $donnees['titre'];?></span></p>
           <div class="deleteliste">
             <form method="post" action="suppliste.php">  <!--supprimer liste-->
